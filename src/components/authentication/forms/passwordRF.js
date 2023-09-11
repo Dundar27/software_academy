@@ -1,6 +1,8 @@
+"use client";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/database/firebase";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 
 export default function PasswordRF() {
   const [fields, setFields] = useState({
@@ -19,10 +21,11 @@ export default function PasswordRF() {
     const success_alert = document.getElementById("s-alert");
     const error_alert = document.getElementById("e-alert");
 
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, fields.email)
       .then(() => {
         success_alert.style.display = "block";
         setTimeout(function () {
+          success_alert.style.display = "none";
           redirect("/login");
         }, 1000);
       })
