@@ -8,8 +8,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { useContext } from "react";
-import { AuthContext } from "@/context/auth";
+/* import { useContext } from "react";
+import { AuthContext } from "@/context/auth"; */
 
 export default function LoginF() {
   const [fields, setFields] = useState({
@@ -21,7 +21,7 @@ export default function LoginF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
-  const { addUser } = useContext(AuthContext);
+  /* const { addUser } = useContext(AuthContext); */
 
   const Login = (e) => {
     e.preventDefault();
@@ -29,9 +29,7 @@ export default function LoginF() {
     const _error = document.getElementById("alert");
 
     signInWithEmailAndPassword(auth, fields.email, fields.password)
-      .then((u) => {
-        const user = u.user;
-        addUser(user);
+      .then(() => {
         setTimeout(function () {
           window.location = "/";
         }, 1000);
@@ -54,9 +52,7 @@ export default function LoginF() {
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
-      .then((u) => {
-        const user = u.user;
-        addUser(user);
+      .then(() => {
         setTimeout(function () {
           window.location = "/";
         }, 1000);

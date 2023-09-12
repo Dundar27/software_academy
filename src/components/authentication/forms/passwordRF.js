@@ -15,9 +15,7 @@ export default function PasswordRF() {
 
   const PasswordReset = (e) => {
     e.preventDefault();
-    {
-      /*Alert Message */
-    }
+
     const success_alert = document.getElementById("s-alert");
     const error_alert = document.getElementById("e-alert");
 

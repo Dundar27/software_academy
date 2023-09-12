@@ -7,8 +7,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   let [user, setUser] = useState({});
 
-  const addUser = (newUser) => {
-    setUser([...user, newUser]);
+  const addUser = async (newUser) => {
+    await setUser(newUser);
   };
 
   return (

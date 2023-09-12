@@ -8,6 +8,17 @@ const nextConfig = {
     MESSAGING_SENDER_ID: "62664588991",
     APP_ID: "1:62664588991:web:498d8c0c4556e0436d100a",
   },
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        port: "",
+        pathname: "**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

@@ -9,12 +9,13 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { useContext } from "react";
-import { AuthContext } from "@/context/auth";
+/* import { useContext } from "react";
+import { AuthContext } from "@/context/auth"; */
 
 export default function RegisterF() {
   const [fields, setFields] = useState({
     email: "",
+    username: "",
     password: "",
     confirm_password: "",
   });
@@ -23,7 +24,7 @@ export default function RegisterF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
-  const { addUser } = useContext(AuthContext);
+  /* let { addUser } = useContext(AuthContext); */
 
   function Register(e) {
     e.preventDefault();
@@ -39,8 +40,16 @@ export default function RegisterF() {
     } else {
       createUserWithEmailAndPassword(auth, fields.email, fields.password)
         .then((u) => {
-          const user = u.user;
-          addUser(user);
+          u.user.displayName = fields.username;
+          u.user.photoURL =
+            "https://cdn-icons-png.flaticon.com/128/848/848043.png";
+
+          /* addUser({
+            username: fields.username,
+            email: fields.email,
+            photoURL: "https://cdn-icons-png.flaticon.com/128/848/848043.png",
+          }); */
+
           sendEmailVerification(auth.currentUser)
             .then(() => {
               email_verify_alert.style.display = "block";
@@ -69,9 +78,7 @@ export default function RegisterF() {
     const email_verify_alert = document.getElementById("alert");
 
     signInWithPopup(auth, provider)
-      .then((u) => {
-        const user = u.user;
-        addUser(user);
+      .then(() => {
         sendEmailVerification(auth.currentUser)
           .then(() => {
             email_verify_alert.style.display = "block";
@@ -141,6 +148,36 @@ export default function RegisterF() {
               style={{ display: "none" }}
             >
               This email address has already been used
+            </p>
+          </div>
+          {/* <!-- End Form Group --> */}
+
+          {/* <!-- Form Group --> */}
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-sm mb-2 dark:text-white"
+            >
+              Username
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={fields.username}
+                onChange={handleChange}
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                required
+                aria-describedby="username-error"
+                pattern="[a-zA-Z0-9.]{3,16}"
+                minLength={3}
+                maxLength={16}
+              />
+            </div>
+            <p className="text-xs text-gray-600 mt-2" id="username-error">
+              You can use uppercase, lowercase letters and periods. <br /> Min 3
+              Max 16 character, character count: {fields.username.length}
             </p>
           </div>
           {/* <!-- End Form Group --> */}
