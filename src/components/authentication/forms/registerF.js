@@ -9,6 +9,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "@/context/auth";
 
 export default function RegisterF() {
   const [fields, setFields] = useState({
@@ -21,12 +23,11 @@ export default function RegisterF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
+  const { addUser } = useContext(AuthContext);
+
   function Register(e) {
     e.preventDefault();
 
-    {
-      /*Alert Message */
-    }
     const email_error = document.getElementById("email-error");
     const confirm_password_error = document.getElementById(
       "confirm_password-error"
@@ -37,13 +38,20 @@ export default function RegisterF() {
       confirm_password_error.style.display = "block";
     } else {
       createUserWithEmailAndPassword(auth, fields.email, fields.password)
-        .then(() => {
-          sendEmailVerification(auth.currentUser).then(() => {
-            email_verify_alert.style.display = "block";
-            setTimeout(function () {
-              window.location = "/";
-            }, 3000);
-          });
+        .then((u) => {
+          const user = u.user;
+          addUser(user);
+          sendEmailVerification(auth.currentUser)
+            .then(() => {
+              email_verify_alert.style.display = "block";
+              setTimeout(function () {
+                window.location = "/";
+              }, 3000);
+            })
+            .catch((error) => {
+              alert("Email verification failed");
+              console.log(error);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -61,13 +69,20 @@ export default function RegisterF() {
     const email_verify_alert = document.getElementById("alert");
 
     signInWithPopup(auth, provider)
-      .then(() => {
-        sendEmailVerification(auth.currentUser).then(() => {
-          email_verify_alert.style.display = "block";
-          setTimeout(function () {
-            window.location = "/";
-          }, 3000);
-        });
+      .then((u) => {
+        const user = u.user;
+        addUser(user);
+        sendEmailVerification(auth.currentUser)
+          .then(() => {
+            email_verify_alert.style.display = "block";
+            setTimeout(function () {
+              window.location = "/";
+            }, 3000);
+          })
+          .catch((error) => {
+            alert("Email verification failed");
+            console.log(error);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
