@@ -6,10 +6,9 @@ import { auth } from "@/database/firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
-import { useContext } from "react";
-import AppContext from "@/context";
-import { redirect } from "next/navigation";
 
 export default function RegisterF() {
   const [fields, setFields] = useState({
@@ -21,8 +20,6 @@ export default function RegisterF() {
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
-
-  let user = useContext(AppContext);
 
   function Register(e) {
     e.preventDefault();
@@ -40,12 +37,11 @@ export default function RegisterF() {
       confirm_password_error.style.display = "block";
     } else {
       createUserWithEmailAndPassword(auth, fields.email, fields.password)
-        .then((userCredential) => {
-          user = userCredential.user;
+        .then(() => {
           sendEmailVerification(auth.currentUser).then(() => {
             email_verify_alert.style.display = "block";
             setTimeout(function () {
-              redirect("/");
+              window.location = "/";
             }, 3000);
           });
         })
@@ -60,11 +56,33 @@ export default function RegisterF() {
     }
   }
 
+  const RegisterWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    const email_verify_alert = document.getElementById("alert");
+
+    signInWithPopup(auth, provider)
+      .then(() => {
+        sendEmailVerification(auth.currentUser).then(() => {
+          email_verify_alert.style.display = "block";
+          setTimeout(function () {
+            window.location = "/";
+          }, 3000);
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   return (
     <div>
       <button
         type="button"
         className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+        onClick={RegisterWithGoogle}
       >
         <Image
           src="/svg/google.svg"

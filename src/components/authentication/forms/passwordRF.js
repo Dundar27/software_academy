@@ -26,7 +26,7 @@ export default function PasswordRF() {
         success_alert.style.display = "block";
         setTimeout(function () {
           success_alert.style.display = "none";
-          redirect("/login");
+          window.location = "/login";
         }, 1000);
       })
       .catch((error) => {
