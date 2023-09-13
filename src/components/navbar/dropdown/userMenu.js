@@ -9,7 +9,7 @@ import { signOut } from "firebase/auth";
 
 export default function UserMenu() {
   const [showDropDown, setSDD] = useState(false);
-  let { user, addUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   console.log(user)
   const LinkClass =
     "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300";
@@ -30,7 +30,7 @@ export default function UserMenu() {
             className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
             src={
               auth.currentUser
-                ? user.photoURL 
+                ? user.photoURL ? user.photoURL : "/svg/next.svg"
                 : "https://cdn-icons-png.flaticon.com/128/848/848043.png"
             }
             alt="User Profile"
@@ -74,7 +74,6 @@ export default function UserMenu() {
                   onClick={() =>
                     signOut(auth)
                       .then(() => {
-                        addUser(null);
                         window.location.reload();
                       })
                       .catch((e) => {

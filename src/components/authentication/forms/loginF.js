@@ -8,8 +8,6 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-/* import { useContext } from "react";
-import { AuthContext } from "@/context/auth"; */
 import { redirect } from "next/navigation";
 
 export default function LoginF() {
@@ -22,22 +20,17 @@ export default function LoginF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
-  /*   const { addUser } = useContext(AuthContext); */
-
   const Login = async (e) => {
     e.preventDefault();
 
     const _error = document.getElementById("alert");
 
     await signInWithEmailAndPassword(auth, fields.email, fields.password)
-      .then(
-        /* async */ (u) => {
-          /* await addUser(u.user); */
-          setTimeout(function () {
-            redirect("/");
-          }, 1000);
-        }
-      )
+      .then(() => {
+        setTimeout(function () {
+          redirect("/");
+        }, 1000);
+      })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -54,19 +47,19 @@ export default function LoginF() {
 
   const LoginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
+    const google_error_alert = document.getElementById("google-error-alert");
 
     await signInWithPopup(auth, provider)
-      .then(
-        /* async */ (u) => {
-          /* await addUser(u.user); */
-          redirect("/");
-        }
-      )
+      .then(() => {
+        redirect("/");
+      })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
 
         console.log(errorCode, errorMessage);
+
+        google_error_alert.style.display = "block";
       });
   };
 
@@ -185,6 +178,15 @@ export default function LoginF() {
       >
         <span className="font-bold">Info</span> Email address or password is
         incorrect. Make sure you entered correctly
+      </div>
+      <div
+        className="w-1/4 fixed top-5 left-0 right-0 mx-auto bg-red-50 border border-red-200 text-sm text-red-600 rounded-md p-4"
+        role="alert"
+        id="google-error-alert"
+        style={{ display: "none" }}
+      >
+        <span className="font-bold">Error</span> An error occurred while this
+        operation was in progress, please try again later.
       </div>
     </div>
   );

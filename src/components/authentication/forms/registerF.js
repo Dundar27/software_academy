@@ -8,9 +8,8 @@ import {
   sendEmailVerification,
   signInWithPopup,
   GoogleAuthProvider,
+  updateProfile,
 } from "firebase/auth";
-/* import { useContext } from "react";
-import { AuthContext } from "@/context/auth"; */
 import { redirect } from "next/navigation";
 
 export default function RegisterF() {
@@ -25,27 +24,30 @@ export default function RegisterF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
-  /* let { addUser } = useContext(AuthContext); */
+  const confirm_password_error = document.getElementById(
+    "confirm_password-error"
+  );
+  const email_verify_alert = document.getElementById("alert");
+  const email_error = document.getElementById("email-error");
+  const verify_error_alert = document.getElementById("verify-error-alert");
+  const profile_error_alert = document.getElementById("profile-error-alert");
+  const google_error_alert = document.getElementById("google-error-alert");
 
   async function Register(e) {
     e.preventDefault();
-
-    const email_error = document.getElementById("email-error");
-    const confirm_password_error = document.getElementById(
-      "confirm_password-error"
-    );
-    const email_verify_alert = document.getElementById("alert");
 
     if (fields.password !== fields.confirm_password) {
       confirm_password_error.style.display = "block";
     } else {
       await createUserWithEmailAndPassword(auth, fields.email, fields.password)
-        .then(async (u) => {
-          /* u.user.displayName = await fields.username;
-          u.user.photoURL =
-            await "https://cdn-icons-png.flaticon.com/128/848/848043.png";
-
-          await addUser(u.user); */
+        .then(async () => {
+          await updateProfile(auth.currentUser, {
+            displayName: fields.username,
+            photoURL: "https://cdn-icons-png.flaticon.com/128/848/848043.png",
+          }).catch((error) => {
+            profile_error_alert.style.display = "block";
+            console.log(error);
+          });
 
           await sendEmailVerification(auth.currentUser)
             .then(() => {
@@ -55,7 +57,7 @@ export default function RegisterF() {
               }, 3000);
             })
             .catch((error) => {
-              alert("Email verification failed");
+              verify_error_alert.style.display = "block";
               console.log(error);
             });
         })
@@ -72,15 +74,17 @@ export default function RegisterF() {
 
   const RegisterWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    const email_verify_alert = document.getElementById("alert");
 
     await signInWithPopup(auth, provider)
-      .then(async (u) => {
-        /* u.user.displayName = await fields.username;
-        u.user.photoURL =
-          await "https://cdn-icons-png.flaticon.com/128/848/848043.png";
+      .then(async () => {
+        await updateProfile(auth.currentUser, {
+          displayName: fields.username,
+          photoURL: "https://cdn-icons-png.flaticon.com/128/848/848043.png",
+        }).catch((error) => {
+          profile_error_alert.style.display = "block";
+          console.log(error);
+        });
 
-        await addUser(u.user); */
         await sendEmailVerification(auth.currentUser)
           .then(() => {
             email_verify_alert.style.display = "block";
@@ -89,7 +93,7 @@ export default function RegisterF() {
             }, 3000);
           })
           .catch((error) => {
-            alert("Email verification failed");
+            verify_error_alert.style.display = "block";
             console.log(error);
           });
       })
@@ -98,6 +102,8 @@ export default function RegisterF() {
         const errorMessage = error.message;
 
         console.log(errorCode, errorMessage);
+
+        google_error_alert.style.display = "block";
       });
   };
 
@@ -292,6 +298,33 @@ export default function RegisterF() {
       >
         <span className="font-bold">Info</span> We have sent you an email to
         verify your email
+      </div>
+      <div
+        className="w-1/4 fixed top-5 left-0 right-0 mx-auto bg-red-50 border border-red-200 text-sm text-red-600 rounded-md p-4"
+        role="alert"
+        id="verify-error-alert"
+        style={{ display: "none" }}
+      >
+        <span className="font-bold">Info</span> We did not send you a
+        verification email.
+      </div>
+      <div
+        className="w-1/4 fixed top-5 left-0 right-0 mx-auto bg-red-50 border border-red-200 text-sm text-red-600 rounded-md p-4"
+        role="alert"
+        id="google-error-alert"
+        style={{ display: "none" }}
+      >
+        <span className="font-bold">Error</span> An error occurred while this
+        operation was in progress, please try again later.
+      </div>
+      <div
+        className="w-1/4 fixed top-5 left-0 right-0 mx-auto bg-red-50 border border-red-200 text-sm text-red-600 rounded-md p-4"
+        role="alert"
+        id="profile-error-alert"
+        style={{ display: "none" }}
+      >
+        <span className="font-bold">Error</span> An error occurred while
+        creating your profile
       </div>
     </div>
   );
