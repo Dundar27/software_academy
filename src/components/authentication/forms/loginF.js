@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function LoginF() {
   const [fields, setFields] = useState({
@@ -20,6 +20,8 @@ export default function LoginF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
+  const router = useRouter();
+
   const Login = async (e) => {
     e.preventDefault();
 
@@ -28,7 +30,7 @@ export default function LoginF() {
     await signInWithEmailAndPassword(auth, fields.email, fields.password)
       .then(() => {
         setTimeout(function () {
-          redirect("/");
+          router.push("/");
         }, 1000);
       })
       .catch((error) => {
@@ -51,7 +53,7 @@ export default function LoginF() {
 
     await signInWithPopup(auth, provider)
       .then(() => {
-        redirect("/");
+        router.push("/");
       })
       .catch((error) => {
         const errorCode = error.code;

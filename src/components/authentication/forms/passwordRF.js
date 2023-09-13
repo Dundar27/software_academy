@@ -2,7 +2,7 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "@/database/firebase";
 import { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function PasswordRF() {
   const [fields, setFields] = useState({
@@ -12,6 +12,8 @@ export default function PasswordRF() {
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
+
+  const router = useRouter();
 
   const PasswordReset = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export default function PasswordRF() {
         success_alert.style.display = "block";
         setTimeout(function () {
           success_alert.style.display = "none";
-          redirect("/login")
+          router.push("/login");
         }, 1000);
       })
       .catch((error) => {

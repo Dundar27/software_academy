@@ -10,7 +10,7 @@ import {
   GoogleAuthProvider,
   updateProfile,
 } from "firebase/auth";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function RegisterF() {
   const [fields, setFields] = useState({
@@ -23,6 +23,8 @@ export default function RegisterF() {
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
+
+  const router = useRouter();
 
   const confirm_password_error = document.getElementById(
     "confirm_password-error"
@@ -53,7 +55,7 @@ export default function RegisterF() {
             .then(() => {
               email_verify_alert.style.display = "block";
               setTimeout(function () {
-                redirect("/");
+                router.push("/");
               }, 3000);
             })
             .catch((error) => {
@@ -89,7 +91,7 @@ export default function RegisterF() {
           .then(() => {
             email_verify_alert.style.display = "block";
             setTimeout(function () {
-              redirect("/");
+              router.push("/");
             }, 3000);
           })
           .catch((error) => {
