@@ -24,7 +24,7 @@ export default function PasswordRF() {
         success_alert.style.display = "block";
         setTimeout(function () {
           success_alert.style.display = "none";
-          window.location = "/login";
+          redirect("/login")
         }, 1000);
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ export default function PasswordRF() {
   return (
     <div className="mt-5">
       {/* <!-- Form --> */}
-      <form onSubmit={PasswordReset}>
+      <form onSubmit={PasswordReset} method="POST">
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
@@ -52,7 +52,7 @@ export default function PasswordRF() {
             >
               Email address
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="email"
                 id="email"

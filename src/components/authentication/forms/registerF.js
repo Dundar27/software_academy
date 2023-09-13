@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 /* import { useContext } from "react";
 import { AuthContext } from "@/context/auth"; */
+import { redirect } from "next/navigation";
 
 export default function RegisterF() {
   const [fields, setFields] = useState({
@@ -26,7 +27,7 @@ export default function RegisterF() {
 
   /* let { addUser } = useContext(AuthContext); */
 
-  function Register(e) {
+  async function Register(e) {
     e.preventDefault();
 
     const email_error = document.getElementById("email-error");
@@ -38,23 +39,19 @@ export default function RegisterF() {
     if (fields.password !== fields.confirm_password) {
       confirm_password_error.style.display = "block";
     } else {
-      createUserWithEmailAndPassword(auth, fields.email, fields.password)
-        .then((u) => {
-          u.user.displayName = fields.username;
+      await createUserWithEmailAndPassword(auth, fields.email, fields.password)
+        .then(async (u) => {
+          /* u.user.displayName = await fields.username;
           u.user.photoURL =
-            "https://cdn-icons-png.flaticon.com/128/848/848043.png";
+            await "https://cdn-icons-png.flaticon.com/128/848/848043.png";
 
-          /* addUser({
-            username: fields.username,
-            email: fields.email,
-            photoURL: "https://cdn-icons-png.flaticon.com/128/848/848043.png",
-          }); */
+          await addUser(u.user); */
 
-          sendEmailVerification(auth.currentUser)
+          await sendEmailVerification(auth.currentUser)
             .then(() => {
               email_verify_alert.style.display = "block";
               setTimeout(function () {
-                window.location = "/";
+                redirect("/");
               }, 3000);
             })
             .catch((error) => {
@@ -73,17 +70,22 @@ export default function RegisterF() {
     }
   }
 
-  const RegisterWithGoogle = () => {
+  const RegisterWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     const email_verify_alert = document.getElementById("alert");
 
-    signInWithPopup(auth, provider)
-      .then(() => {
-        sendEmailVerification(auth.currentUser)
+    await signInWithPopup(auth, provider)
+      .then(async (u) => {
+        /* u.user.displayName = await fields.username;
+        u.user.photoURL =
+          await "https://cdn-icons-png.flaticon.com/128/848/848043.png";
+
+        await addUser(u.user); */
+        await sendEmailVerification(auth.currentUser)
           .then(() => {
             email_verify_alert.style.display = "block";
             setTimeout(function () {
-              window.location = "/";
+              redirect("/");
             }, 3000);
           })
           .catch((error) => {
@@ -120,7 +122,7 @@ export default function RegisterF() {
       </div>
 
       {/* <!-- Form --> */}
-      <form onSubmit={Register}>
+      <form onSubmit={Register} method="POST">
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
@@ -130,7 +132,7 @@ export default function RegisterF() {
             >
               Email address
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="email"
                 id="email"
@@ -160,7 +162,7 @@ export default function RegisterF() {
             >
               Username
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="text"
                 id="username"
@@ -190,7 +192,7 @@ export default function RegisterF() {
             >
               Password
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="password"
                 id="password"
@@ -220,7 +222,7 @@ export default function RegisterF() {
             >
               Confirm Password
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="password"
                 id="confirm_password"

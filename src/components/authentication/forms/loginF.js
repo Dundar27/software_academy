@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 /* import { useContext } from "react";
 import { AuthContext } from "@/context/auth"; */
+import { redirect } from "next/navigation";
 
 export default function LoginF() {
   const [fields, setFields] = useState({
@@ -21,19 +22,22 @@ export default function LoginF() {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
 
-  /* const { addUser } = useContext(AuthContext); */
+  /*   const { addUser } = useContext(AuthContext); */
 
-  const Login = (e) => {
+  const Login = async (e) => {
     e.preventDefault();
 
     const _error = document.getElementById("alert");
 
-    signInWithEmailAndPassword(auth, fields.email, fields.password)
-      .then(() => {
-        setTimeout(function () {
-          window.location = "/";
-        }, 1000);
-      })
+    await signInWithEmailAndPassword(auth, fields.email, fields.password)
+      .then(
+        /* async */ (u) => {
+          /* await addUser(u.user); */
+          setTimeout(function () {
+            redirect("/");
+          }, 1000);
+        }
+      )
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -48,15 +52,16 @@ export default function LoginF() {
       });
   };
 
-  const LoginWithGoogle = () => {
+  const LoginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, provider)
-      .then(() => {
-        setTimeout(function () {
-          window.location = "/";
-        }, 1000);
-      })
+    await signInWithPopup(auth, provider)
+      .then(
+        /* async */ (u) => {
+          /* await addUser(u.user); */
+          redirect("/");
+        }
+      )
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -86,7 +91,7 @@ export default function LoginF() {
       </div>
 
       {/* <!-- Form --> */}
-      <form onSubmit={Login}>
+      <form onSubmit={Login} method="POST">
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
@@ -96,7 +101,7 @@ export default function LoginF() {
             >
               Email address
             </label>
-            <div className="relative">
+            <div className="block">
               <input
                 type="email"
                 id="email"
@@ -127,7 +132,7 @@ export default function LoginF() {
                 Forgot password?
               </Link>
             </div>
-            <div className="relative">
+            <div className="block">
               <input
                 type="password"
                 id="password"

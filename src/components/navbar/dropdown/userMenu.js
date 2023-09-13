@@ -30,7 +30,7 @@ export default function UserMenu() {
             className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
             src={
               auth.currentUser
-                ? user.photoURL
+                ? user.photoURL 
                 : "https://cdn-icons-png.flaticon.com/128/848/848043.png"
             }
             alt="User Profile"
@@ -52,7 +52,7 @@ export default function UserMenu() {
                   Signed in as
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
-                  {user.username}
+                  {user.displayName}
                 </p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
@@ -61,7 +61,7 @@ export default function UserMenu() {
                 </Link>
                 <Link
                   className={LinkClass}
-                  href={`/profile/${user.username}`}
+                  href={`/profile/${user.displayName}`}
                 >
                   <User /> Profile
                 </Link>

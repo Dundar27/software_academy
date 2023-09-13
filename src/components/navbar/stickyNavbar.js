@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { defaultNavigation } from "./Navigation";
 
 export default function StickyNavbar() {
   return (
@@ -7,14 +8,19 @@ export default function StickyNavbar() {
       aria-label="Jump links"
     >
       <div className="max-w-7xl snap-x w-full flex items-center overflow-x-auto scrollbar-x px-4 sm:px-6 lg:px-8 pb-4 md:pb-0 mx-auto dark:scrollbar-x">
-        <div className="snap-center shrink-0 pr-5 sm:pr-8 sm:last-pr-0">
-          <Link
-            className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
-            href="/"
+        {defaultNavigation.map((link) => (
+          <div
+            className="snap-center shrink-0 pr-5 sm:pr-8 sm:last-pr-0"
+            key={link.id}
           >
-            Home
-          </Link>
-        </div>
+            <Link
+              className="inline-flex items-center gap-x-2 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500"
+              href={link.url}
+            >
+              {link.text}
+            </Link>
+          </div>
+        ))}
       </div>
     </nav>
   );
