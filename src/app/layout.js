@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className + " bg-gray-50 dark:bg-slate-900"}>
+      <body className={inter.className + " bg-gray-50"}>
         <AuthProvider>
           <StaticNavbar />
           <StickyNavbar />

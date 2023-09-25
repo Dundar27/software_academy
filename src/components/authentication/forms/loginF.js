@@ -69,7 +69,7 @@ export default function LoginF() {
     <div className="mt-5">
       <button
         type="button"
-        className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+        className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
         onClick={LoginWithGoogle}
       >
         <Image
@@ -81,7 +81,7 @@ export default function LoginF() {
         Login with Google
       </button>
 
-      <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+      <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6">
         Or
       </div>
 
@@ -92,7 +92,7 @@ export default function LoginF() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-sm mb-2"
             >
               Email address
             </label>
@@ -103,7 +103,7 @@ export default function LoginF() {
                 name="email"
                 value={fields.email}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="email-error"
               />
@@ -116,7 +116,7 @@ export default function LoginF() {
             <div className="flex justify-between items-center">
               <label
                 htmlFor="password"
-                className="block text-sm mb-2 dark:text-white"
+                className="block text-sm mb-2"
               >
                 Password
               </label>
@@ -134,7 +134,7 @@ export default function LoginF() {
                 name="password"
                 value={fields.password}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="password-error"
                 pattern="[a-zA-Z0-9.]{8,24}"
@@ -152,11 +152,11 @@ export default function LoginF() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500"
               />
             </div>
             <div className="ml-3">
-              <label htmlFor="remember-me" className="text-sm dark:text-white">
+              <label htmlFor="remember-me" className="text-sm">
                 Remember me
               </label>
             </div>
@@ -165,7 +165,7 @@ export default function LoginF() {
 
           <button
             type="submit"
-            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"
           >
             Login
           </button>

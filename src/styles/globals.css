@@ -21,4 +21,18 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-repeat: no-repeat;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom right, #4d7fff 0%, #1fb6ff 100%);
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border: 1px solid #ccc;
 }

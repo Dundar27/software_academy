@@ -10,9 +10,8 @@ import { signOut } from "firebase/auth";
 export default function UserMenu() {
   const [showDropDown, setSDD] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log(user)
   const LinkClass =
-    "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300";
+    "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:ring-offset-white";
 
   return (
     <div className="flex flex-row items-center justify-end gap-2">
@@ -21,16 +20,18 @@ export default function UserMenu() {
         data-hs-dropdown-placement="bottom-right"
       >
         <button
-          id="hs-dropdown-with-header"
+          id="hs-dropdown-with-trigger"
           type="button"
-          className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+          className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 hover:outline-none hover:ring-2 hover:ring-gray-400 hover:ring-offset-2 hover:ring-offset-white transition-all text-xs"
           onClick={() => setSDD(!showDropDown)}
         >
           <Image
-            className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
+            className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white"
             src={
               auth.currentUser
-                ? user.photoURL ? user.photoURL : "/svg/next.svg"
+                ? user.photoURL
+                  ? user.photoURL
+                  : "/svg/next.svg"
                 : "https://cdn-icons-png.flaticon.com/128/848/848043.png"
             }
             alt="User Profile"
@@ -41,17 +42,17 @@ export default function UserMenu() {
         </button>
 
         <div
-          className="absolute top-10 right-0 hs-dropdown-menu transition-[margin] duration min-w-[15rem] z-10 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700"
+          className="absolute top-10 right-0 hs-dropdown-menu transition-[margin] duration min-w-[15rem] z-10 bg-white shadow-md rounded-lg p-2"
           aria-labelledby="hs-dropdown-with-header"
           style={showDropDown ? { display: "block" } : { display: "none" }}
         >
           {auth.currentUser ? (
             <>
-              <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+              <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg">
+                <p className="text-sm text-gray-500">
                   Signed in as
                 </p>
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
+                <p className="text-sm font-medium text-gray-800">
                   {user.displayName}
                 </p>
               </div>

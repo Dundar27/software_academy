@@ -113,7 +113,7 @@ export default function RegisterF() {
     <div>
       <button
         type="button"
-        className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+        className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
         onClick={RegisterWithGoogle}
       >
         <Image
@@ -125,7 +125,7 @@ export default function RegisterF() {
         Register with Google
       </button>
 
-      <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+      <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6">
         Or
       </div>
 
@@ -136,7 +136,7 @@ export default function RegisterF() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-sm mb-2"
             >
               Email address
             </label>
@@ -147,7 +147,7 @@ export default function RegisterF() {
                 name="email"
                 value={fields.email}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="email-error"
               />
@@ -166,7 +166,7 @@ export default function RegisterF() {
           <div>
             <label
               htmlFor="username"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-sm mb-2"
             >
               Username
             </label>
@@ -177,7 +177,7 @@ export default function RegisterF() {
                 name="username"
                 value={fields.username}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="username-error"
                 pattern="[a-zA-Z0-9.]{3,16}"
@@ -196,7 +196,7 @@ export default function RegisterF() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-sm mb-2"
             >
               Password
             </label>
@@ -207,7 +207,7 @@ export default function RegisterF() {
                 name="password"
                 value={fields.password}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="password-error"
                 pattern="[a-zA-Z0-9.]{8,24}"
@@ -226,7 +226,7 @@ export default function RegisterF() {
           <div>
             <label
               htmlFor="confirm_password"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-sm mb-2"
             >
               Confirm Password
             </label>
@@ -237,7 +237,7 @@ export default function RegisterF() {
                 name="confirm_password"
                 value={fields.confirm_password}
                 onChange={handleChange}
-                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                className="outline-none py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
                 required
                 aria-describedby="confirm_password-error"
                 pattern="[a-zA-Z0-9.]{8,24}"
@@ -262,14 +262,14 @@ export default function RegisterF() {
                 id="accept_policy"
                 name="accept_policy"
                 type="checkbox"
-                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500"
                 required
               />
             </div>
             <div className="ml-3">
               <label
                 htmlFor="accept_policies"
-                className="text-sm dark:text-white"
+                className="text-sm"
               >
                 I accept the{" "}
                 <Link
@@ -285,7 +285,7 @@ export default function RegisterF() {
 
           <button
             type="submit"
-            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+            className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"
           >
             Register
           </button>

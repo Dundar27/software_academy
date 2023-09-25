@@ -63,9 +63,9 @@ export default function LayoutF() {
   };
 
   return (
-    <main className="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-6">
+    <main className="bg-gray-100 flex h-full items-center py-6">
       <div className="w-full max-w-md mx-auto p-6">
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4 sm:p-7">
             {WhichHeader()}
 
