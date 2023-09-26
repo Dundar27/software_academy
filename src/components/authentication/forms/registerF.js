@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-export default function RegisterF() {
+export default function RegisterF({ forward = "/" }) {
   const [fields, setFields] = useState({
     email: "",
     username: "",
@@ -55,7 +55,7 @@ export default function RegisterF() {
             .then(() => {
               email_verify_alert.style.display = "block";
               setTimeout(function () {
-                router.push("/");
+                router.push(forward);
               }, 3000);
             })
             .catch((error) => {
@@ -91,7 +91,7 @@ export default function RegisterF() {
           .then(() => {
             email_verify_alert.style.display = "block";
             setTimeout(function () {
-              router.push("/");
+              router.push(forward);
             }, 3000);
           })
           .catch((error) => {
@@ -134,10 +134,7 @@ export default function RegisterF() {
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="email" className="block text-sm mb-2">
               Email address
             </label>
             <div className="block">
@@ -164,10 +161,7 @@ export default function RegisterF() {
 
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="username"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="username" className="block text-sm mb-2">
               Username
             </label>
             <div className="block">
@@ -194,10 +188,7 @@ export default function RegisterF() {
 
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="password" className="block text-sm mb-2">
               Password
             </label>
             <div className="block">
@@ -224,10 +215,7 @@ export default function RegisterF() {
 
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="confirm_password"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="confirm_password" className="block text-sm mb-2">
               Confirm Password
             </label>
             <div className="block">
@@ -267,10 +255,7 @@ export default function RegisterF() {
               />
             </div>
             <div className="ml-3">
-              <label
-                htmlFor="accept_policies"
-                className="text-sm"
-              >
+              <label htmlFor="accept_policies" className="text-sm">
                 I accept the{" "}
                 <Link
                   className="text-blue-600 decoration-2 hover:underline font-medium"

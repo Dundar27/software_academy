@@ -48,10 +48,7 @@ export default function PasswordRF() {
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="email" className="block text-sm mb-2">
               Email address
             </label>
             <div className="block">

@@ -52,9 +52,9 @@ export default function LayoutF() {
   const WhichForm = () => {
     switch (params) {
       case "/login":
-        return <LoginF />;
+        return <LoginF forward="/" />;
       case "/register":
-        return <RegisterF />;
+        return <RegisterF forward="/" />;
       case "/password-reset":
         return <PasswordRF />;
       default:

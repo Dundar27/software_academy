@@ -67,7 +67,7 @@ export default function BorderedCards() {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* <!-- Card --> */}
-      {posts.slice(0,state).map((post) => (
+      {posts.slice(0, state).map((post) => (
         <Link
           className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
           href="#"

@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <StaticNavbar />
           <StickyNavbar />
-            <main id="content" role="main">
-              {children}
-            </main>
+          <main id="content" role="main">
+            {children}
+          </main>
         </AuthProvider>
       </body>
     </html>

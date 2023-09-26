@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-export default function LoginF() {
+export default function LoginF({ forward = "/" }) {
   const [fields, setFields] = useState({
     email: "",
     password: "",
@@ -30,7 +30,7 @@ export default function LoginF() {
     await signInWithEmailAndPassword(auth, fields.email, fields.password)
       .then(() => {
         setTimeout(function () {
-          router.push("/");
+          router.push(forward);
         }, 1000);
       })
       .catch((error) => {
@@ -53,7 +53,7 @@ export default function LoginF() {
 
     await signInWithPopup(auth, provider)
       .then(() => {
-        router.push("/");
+        router.push(forward);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -90,10 +90,7 @@ export default function LoginF() {
         <div className="grid gap-y-4">
           {/* <!-- Form Group --> */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm mb-2"
-            >
+            <label htmlFor="email" className="block text-sm mb-2">
               Email address
             </label>
             <div className="block">
@@ -114,10 +111,7 @@ export default function LoginF() {
           {/* <!-- Form Group --> */}
           <div>
             <div className="flex justify-between items-center">
-              <label
-                htmlFor="password"
-                className="block text-sm mb-2"
-              >
+              <label htmlFor="password" className="block text-sm mb-2">
                 Password
               </label>
               <Link

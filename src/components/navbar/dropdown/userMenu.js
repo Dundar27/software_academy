@@ -50,9 +50,7 @@ export default function UserMenu() {
           {auth.currentUser ? (
             <>
               <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg">
-                <p className="text-sm text-gray-500">
-                  Signed in as
-                </p>
+                <p className="text-sm text-gray-500">Signed in as</p>
                 <p className="text-sm font-medium text-gray-800">
                   {user.displayName}
                 </p>
