@@ -7,7 +7,7 @@ const defaultNavigation = [
     {
         id:1,
         text:"Blog",
-        url:"/blog"
+        url:"/blog#blog"
     },
     {
         id:2,

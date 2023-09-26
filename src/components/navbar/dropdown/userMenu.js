@@ -22,7 +22,7 @@ export default function UserMenu() {
         <button
           id="hs-dropdown-with-trigger"
           type="button"
-          className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 hover:outline-none hover:ring-2 hover:ring-gray-400 hover:ring-offset-2 hover:ring-offset-white transition-all text-xs"
+          className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 hover:outline-none hover:ring-2 hover:ring-blue-500 hover:ring-offset-2 hover:ring-offset-white transition-all text-xs"
           onClick={() => setSDD(!showDropDown)}
         >
           <Image
@@ -38,6 +38,7 @@ export default function UserMenu() {
             width={128}
             height={128}
             quality={100}
+            priority
           />
         </button>
 
