@@ -1,5 +1,6 @@
 "use client";
 import { auth } from "@/database/firebase";
+import { signOut } from "firebase/auth";
 import React, { useEffect } from "react";
 import { createContext, useState } from "react";
 
@@ -17,13 +18,17 @@ export const AuthProvider = ({ children }) => {
       }
     });
 
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const handleBeforeUnload = () => {
+      signOut(auth).catch((e) => {
+        console.log(e);
+      });
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
       unsubscribe();
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
