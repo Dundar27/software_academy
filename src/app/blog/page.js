@@ -10,7 +10,7 @@ export default function Blog() {
   return (
     <div
       id="blog"
-      className="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
+      className="w-full px-4 py-10 mx-auto"
     >
       {/* <!-- Title --> */}
       <BlogHeader />

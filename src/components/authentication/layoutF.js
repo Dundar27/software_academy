@@ -66,7 +66,7 @@ export default function LayoutF() {
     <main className="bg-gray-100 flex h-screen items-center">
       <div className="w-full max-w-md mx-auto p-6">
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="p-4 sm:p-7">
+          <div className="p-4">
             {WhichHeader()}
 
             <div className="mt-5">{WhichForm()}</div>

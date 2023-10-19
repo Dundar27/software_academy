@@ -69,7 +69,7 @@ const posts = [
 export default function BorderedCards() {
   let { state } = useContext(PostContext);
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-3 gap-6">
       {/* <!-- Card --> */}
       {posts.slice(0, state).map((post) => (
         <Link

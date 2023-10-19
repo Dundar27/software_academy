@@ -1,7 +1,7 @@
 export default function BlogHeader() {
   return (
     <div className="max-w-4xl mx-auto text-center my-6">
-      <h2 className="text-2xl font-bold text-blue-500 md:text-4xl md:leading-tight">
+      <h2 className="text-3xl font-bold text-blue-500">
         The Blog
       </h2>
       <p className="mt-5 text-gray-600 text-sm">
