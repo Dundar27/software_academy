@@ -15,7 +15,7 @@ export default function LayoutF() {
           <HeaderF
             title="Login"
             text="Don't have an account yet?"
-            link="/register"
+            link="/register#register"
             link_text="Register here"
           />
         );
@@ -24,7 +24,7 @@ export default function LayoutF() {
           <HeaderF
             title="Register"
             text="Already have an account?"
-            link="/login"
+            link="/login#login"
             link_text="Login here"
           />
         );
@@ -33,7 +33,7 @@ export default function LayoutF() {
           <HeaderF
             title="Forgot Password ?"
             text="Remember your password?"
-            link="/login"
+            link="/login#login"
             link_text="Login here"
           />
         );
@@ -42,7 +42,7 @@ export default function LayoutF() {
           <HeaderF
             title="Login"
             text="Don't have an account yet?"
-            link="/register"
+            link="/register#register"
             link_text="Register here"
           />
         );
@@ -63,7 +63,7 @@ export default function LayoutF() {
   };
 
   return (
-    <main className="bg-gray-100 flex h-full items-center py-6">
+    <main className="bg-gray-100 flex h-screen items-center">
       <div className="w-full max-w-md mx-auto p-6">
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4 sm:p-7">

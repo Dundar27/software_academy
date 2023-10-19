@@ -88,7 +88,7 @@ export default function UserMenu() {
             </>
           ) : (
             <div className="mt-2 py-2 first:pt-0 last:pb-0">
-              <Link className={LinkClass} href="/login">
+              <Link className={LinkClass} href="/login#login">
                 <LogIn /> Login
               </Link>
             </div>

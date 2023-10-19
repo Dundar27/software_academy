@@ -17,6 +17,7 @@ const posts = [
     authorProfileUrl:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
     authorName: "By Lauren Waller",
+    date: "19.10.2023"
   },
   {
     id: 1,
@@ -31,6 +32,7 @@ const posts = [
     authorProfileUrl:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
     authorName: "By Lauren Waller",
+    date: "19.10.2023"
   },
   {
     id: 2,
@@ -45,6 +47,7 @@ const posts = [
     authorProfileUrl:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
     authorName: "By Lauren Waller",
+    date: "19.10.2023"
   },
   {
     id: 3,
@@ -59,6 +62,7 @@ const posts = [
     authorProfileUrl:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
     authorName: "By Lauren Waller",
+    date: "19.10.2023"
   },
 ];
 
@@ -90,18 +94,19 @@ export default function BorderedCards() {
             </h3>
             <p className="mt-5 text-gray-600">{post.description}</p>
           </div>
-          <div className="mt-auto flex items-center gap-x-3">
-            <Image
-              className="w-8 h-8 rounded-full"
-              src={post.authorProfileUrl}
-              alt="Author Profile Photo"
-              width={300}
-              height={300}
-              priority
-            />
-            <div>
-              <h5 className="text-sm text-gray-800">{post.authorName}</h5>
+          <div className="mt-auto flex flex-row justify-between items-center gap-x-3 p-1">
+            <div className="flex items-center justify-between">
+              <Image
+                className="w-8 h-8 rounded-full"
+                src={post.authorProfileUrl}
+                alt="Author Profile Photo"
+                width={300}
+                height={300}
+                priority
+              />
+              <h5 className="text-sm text-gray-800 p-2">{post.authorName}</h5>
             </div>
+            <span className="text-sm text-gray-700 p-2">{post.date}</span>
           </div>
         </Link>
       ))}
