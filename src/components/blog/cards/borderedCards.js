@@ -3,78 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
-const posts = [
-  {
-    id: 0,
-    postUrl: "#",
-    imageSrc:
-      "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    imageTitle: "Announcing a free plan for small teams",
-    imageAlt: "Image Description",
-    title: "Announcing a free plan for small teams",
-    description:
-      "At Wake, our mission has always been focused on bringing openness.",
-    authorProfileUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    authorName: "By Lauren Waller",
-    date: "19.10.2023"
-  },
-  {
-    id: 1,
-    postUrl: "#",
-    imageSrc:
-      "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    imageTitle: "Announcing a free plan for small teams",
-    imageAlt: "Image Description",
-    title: "Announcing a free plan for small teams",
-    description:
-      "At Wake, our mission has always been focused on bringing openness.",
-    authorProfileUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    authorName: "By Lauren Waller",
-    date: "19.10.2023"
-  },
-  {
-    id: 2,
-    postUrl: "#",
-    imageSrc:
-      "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    imageTitle: "Announcing a free plan for small teams",
-    imageAlt: "Image Description",
-    title: "Announcing a free plan for small teams",
-    description:
-      "At Wake, our mission has always been focused on bringing openness.",
-    authorProfileUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    authorName: "By Lauren Waller",
-    date: "19.10.2023"
-  },
-  {
-    id: 3,
-    postUrl: "#",
-    imageSrc:
-      "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    imageTitle: "Announcing a free plan for small teams",
-    imageAlt: "Image Description",
-    title: "Announcing a free plan for small teams",
-    description:
-      "At Wake, our mission has always been focused on bringing openness.",
-    authorProfileUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    authorName: "By Lauren Waller",
-    date: "19.10.2023"
-  },
-];
-
 export default function BorderedCards() {
-  let { state } = useContext(PostContext);
+  let { state, posts } = useContext(PostContext);
   return (
     <div className="grid grid-cols-3 gap-6">
       {/* <!-- Card --> */}
       {posts.slice(0, state).map((post) => (
         <Link
           className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
-          href="#"
+          href={post.postUrl}
           key={post.id}
         >
           <div className="aspect-w-16 aspect-h-11">
@@ -83,9 +20,10 @@ export default function BorderedCards() {
               src={post.imageSrc}
               alt={post.imageAlt}
               title={post.imageTitle}
-              width={300}
+              width={500}
               height={300}
               priority
+              style={{height: 300}}
             />
           </div>
           <div className="my-6">
