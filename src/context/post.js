@@ -4,7 +4,6 @@ import { createContext, useState } from "react";
 
 export const PostContext = createContext();
 export const PostProvider = ({ children }) => {
-  let [state, setState] = useState(3);
 
   const posts = [
     {
@@ -52,7 +51,7 @@ export const PostProvider = ({ children }) => {
       title: "Announcing a free plan for small teams",
       description:
         "At Wake, our mission has always been focused on bringing openness.",
-        content: `Why do you need an excellent freelance writing portfolio?
+      content: `Why do you need an excellent freelance writing portfolio?
         Over the last decade, I've run an advertising agency and worked in content marketing for hundreds of clients and stakeholders. When I had to hire writers or present my own writing to potential clients, the writing portfolio was the first step in the process.
         
         As a writer and creator, a writing portfolio allows you to do the following:
@@ -87,7 +86,7 @@ export const PostProvider = ({ children }) => {
       title: "Announcing a free plan for small teams",
       description:
         "At Wake, our mission has always been focused on bringing openness.",
-        content: `Why do you need an excellent freelance writing portfolio?
+      content: `Why do you need an excellent freelance writing portfolio?
         Over the last decade, I've run an advertising agency and worked in content marketing for hundreds of clients and stakeholders. When I had to hire writers or present my own writing to potential clients, the writing portfolio was the first step in the process.
         
         As a writer and creator, a writing portfolio allows you to do the following:
@@ -122,7 +121,7 @@ export const PostProvider = ({ children }) => {
       title: "Announcing a free plan for small teams",
       description:
         "At Wake, our mission has always been focused on bringing openness.",
-        content: `Why do you need an excellent freelance writing portfolio?
+      content: `Why do you need an excellent freelance writing portfolio?
         Over the last decade, I've run an advertising agency and worked in content marketing for hundreds of clients and stakeholders. When I had to hire writers or present my own writing to potential clients, the writing portfolio was the first step in the process.
         
         As a writer and creator, a writing portfolio allows you to do the following:
@@ -149,8 +148,25 @@ export const PostProvider = ({ children }) => {
     },
   ];
 
+  let [state, setState] = useState(3);
+  let [query, setQuery] = useState("");
+
+  let filteredPosts = posts.filter((post) => {
+    return (
+      post.title
+        .toLowerCase()
+        .indexOf(query.toLowerCase()) !== -1 ||
+      post.authorName
+        .toLowerCase()
+        .indexOf(query.toLowerCase()) !== -1 ||
+      post.category
+        .toLowerCase()
+        .indexOf(query.toLowerCase()) !== -1
+    );
+  });
+
   return (
-    <PostContext.Provider value={{ state, setState, posts, }}>
+    <PostContext.Provider value={{ posts, state, setState, query, setQuery, filteredPosts }}>
       {children}
     </PostContext.Provider>
   );

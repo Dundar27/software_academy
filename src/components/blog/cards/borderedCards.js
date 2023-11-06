@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function BorderedCards() {
-  let { state, posts } = useContext(PostContext);
+  let { state, filteredPosts } = useContext(PostContext);
   return (
     <div className="grid grid-cols-3 gap-6">
       {/* <!-- Card --> */}
-      {posts.slice(0, state).map((post) => (
+      {filteredPosts.slice(0, state).map((post) => (
         <Link
           className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5"
           href={post.postUrl}

@@ -1,9 +1,10 @@
 "use client";
-import BlogHeader from "@/components/blog/blogHeader";
+/* import BlogHeader from "@/components/blog/blogHeader"; */
 import BorderedCards from "@/components/blog/cards/borderedCards";
 import { useContext } from "react";
 import { PostContext } from "@/context/post";
 import { ArrowRightCircle } from "react-feather";
+import SearchB from "@/components/forms/searchB";
 
 export default function Blog() {
   let { state, setState } = useContext(PostContext);
@@ -13,8 +14,18 @@ export default function Blog() {
       className="w-full px-4 py-10 mx-auto"
     >
       {/* <!-- Title --> */}
-      <BlogHeader />
+      {/* <BlogHeader /> */}
       {/* <!-- End Title --> */}
+
+      <SearchB
+        title="The Blog"
+        description={`Hello, welcome to our Web Technologies Academy blog page! It is a resource      
+                    platform full of information that appeals to beginners and experienced
+                    professionals in the software world. Here you can find many interesting
+                    articles that will inform you about various programming languages,
+                    frameworks, software development processes and more.`}
+        areThereTags={true}
+      />
 
       {/* <!-- Grid --> */}
       <BorderedCards />

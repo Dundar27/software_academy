@@ -18,17 +18,8 @@ export const AuthProvider = ({ children }) => {
       }
     });
 
-    const handleBeforeUnload = () => {
-      signOut(auth).catch((e) => {
-        console.log(e);
-      });
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
     return () => {
       unsubscribe();
-      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
