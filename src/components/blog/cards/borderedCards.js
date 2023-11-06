@@ -23,7 +23,7 @@ export default function BorderedCards() {
               width={500}
               height={300}
               priority
-              style={{height: 300}}
+              style={{ height: 300 }}
             />
           </div>
           <div className="my-6">
@@ -44,7 +44,10 @@ export default function BorderedCards() {
               />
               <h5 className="text-sm text-gray-800 p-2">{post.authorName}</h5>
             </div>
-            <span className="text-sm text-gray-700 p-2">{post.date}</span>
+            <div>
+              <span className="text-sm bg-gray-100 text-gray-700 rounded-lg shadow-md p-2">{post.category}</span>
+              <span className="text-sm text-gray-700 p-2">{post.date}</span>
+            </div>
           </div>
         </Link>
       ))}

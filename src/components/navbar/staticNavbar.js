@@ -14,7 +14,7 @@ export default function StaticNavbar() {
             href="/"
             aria-label="Brand"
           >
-            Software Academy
+            WTA
           </Link>
         </div>
 
