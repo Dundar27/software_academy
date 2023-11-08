@@ -5,10 +5,12 @@ import { useState, useContext } from "react";
 import { Zap, User, Settings, LogOut, LogIn } from "react-feather";
 import { AuthContext } from "@/context/auth";
 import { auth } from "@/database/firebase";
-import { signOut } from "firebase/auth";
+import SignOut from "@/components/forms/signOut";
 
 export default function UserMenu() {
   const [showDropDown, setSDD] = useState(false);
+  const [mShow, setMShow] = useState(false);
+
   const { user } = useContext(AuthContext);
   const LinkClass =
     "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:ring-offset-white";
@@ -71,16 +73,7 @@ export default function UserMenu() {
                 <button
                   type="button"
                   className={LinkClass}
-                  onClick={() =>
-                    signOut(auth)
-                      .then(() => {
-                        window.location.reload();
-                      })
-                      .catch((e) => {
-                        alert("Please try again because logout failed");
-                        console.log(e);
-                      })
-                  }
+                  onClick={() => setMShow(true)}
                 >
                   <LogOut /> Logout
                 </button>
@@ -95,6 +88,8 @@ export default function UserMenu() {
           )}
         </div>
       </div>
+
+      <SignOut mShow={mShow} setMShow={setMShow} />
     </div>
   );
 }
