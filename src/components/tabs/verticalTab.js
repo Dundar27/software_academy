@@ -1,6 +1,6 @@
 "use client";
 import { Tab } from "@headlessui/react";
-import { Zap, Layout, Settings } from "react-feather"
+import { Zap, Layout, Settings, User } from "react-feather"
 
 export default function VerticalTab() {
 
@@ -14,6 +14,10 @@ export default function VerticalTab() {
         {
             icon: <Zap />,
             text: "Notifications",
+        },
+        {
+            icon: <User />,
+            text: "Profile Settings",
         },
         {
             icon: <Settings />,
