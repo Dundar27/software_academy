@@ -5,7 +5,7 @@ import LoginF from "./forms/loginF";
 import RegisterF from "./forms/registerF";
 import PasswordRF from "./forms/passwordRF";
 
-export default function LayoutF() {
+export default function LayoutF({url= "/"}) {
   const params = usePathname();
 
   const WhichHeader = () => {
@@ -58,7 +58,7 @@ export default function LayoutF() {
       case "/password-reset":
         return <PasswordRF />;
       default:
-        return <LoginF />;
+        return <LoginF forward={url}/>;
     }
   };
 
