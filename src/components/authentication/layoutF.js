@@ -63,7 +63,7 @@ export default function LayoutF() {
   };
 
   return (
-    <main className="bg-gray-100 flex h-screen items-center">
+    <main className="flex items-center">
       <div className="w-full max-w-md mx-auto p-6">
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4">

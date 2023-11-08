@@ -9,7 +9,7 @@ export default function Sidebar() {
     return (
         <>
             {/* Sidebar */}
-            <div className="col-span-1 w-full h-full bg-gradient-to-r from-gray-50 via-transparent to-transparent">
+            <div className="col-span-1 w-full h-full">
                 <div className="py-8 pl-6">
 
                     <div className="space-y-6">

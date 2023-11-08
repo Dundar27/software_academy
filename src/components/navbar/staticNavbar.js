@@ -3,9 +3,9 @@ import UserMenu from "./dropdown/userMenu";
 
 export default function StaticNavbar() {
   return (
-    <nav className="flex flex-wrap justify-start flex-nowrap z-50 w-full bg-white border-b text-sm py-2.5">
+    <nav className="flex flex-wrap justify-start flex-nowrap z-100 w-full bg-white border-b text-sm py-2.5">
       <div
-        className="max-w-7xl flex basis-full items-center w-full mx-auto px-4"
+        className="px-8 flex basis-full items-center w-full mx-auto"
         aria-label="Global"
       >
         <div className="mr-5">

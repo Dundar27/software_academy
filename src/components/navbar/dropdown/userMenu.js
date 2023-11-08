@@ -58,16 +58,16 @@ export default function UserMenu() {
                 </p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
-                <Link className={LinkClass} href="/account">
-                  <Zap /> Notifications
-                </Link>
                 <Link
                   className={LinkClass}
                   href={`/profile/${user.displayName}`}
                 >
                   <User /> Profile
                 </Link>
-                <Link className={LinkClass} href="/account/settings">
+                <Link className={LinkClass} href="/account">
+                  <Zap /> Notifications
+                </Link>
+                <Link className={LinkClass} href="/account">
                   <Settings /> Account Settings
                 </Link>
                 <button
@@ -81,7 +81,7 @@ export default function UserMenu() {
             </>
           ) : (
             <div className="mt-2 py-2 first:pt-0 last:pb-0">
-              <Link className={LinkClass} href="/login#login">
+              <Link className={LinkClass} href="/login">
                 <LogIn /> Login
               </Link>
             </div>

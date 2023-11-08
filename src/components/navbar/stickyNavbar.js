@@ -8,7 +8,7 @@ export default function StickyNavbar() {
       className="sticky w-full -top-px -mt-px bg-white text-black text-sm font-medium border-y border-gray-200 shadow-sm shadow-gray-200 py-2"
       aria-label="Jump links"
     >
-      <div className="flex basis-full items-center mx-auto max-w-7xl">
+      <div className="flex basis-full items-center mx-auto px-4">
         <div className="basis-1/2 snap-x flex items-center overflow-x-auto scrollbar-x px-4 py-2 mx-auto">
           {defaultNavigation.map((link) => (
             <div

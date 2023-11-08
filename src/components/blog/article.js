@@ -27,7 +27,7 @@ export default function Article() {
                         <h2 className="text-4xl font-bold">{post.title}</h2>
 
                         <div className="flex items-center gap-x-5">
-                            <Link className="inline-flex items-center gap-1.5 py-2 px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200" href={`/blog/categories/category/${post.id}`}>
+                            <Link className="inline-flex items-center gap-1.5 py-2 px-4 rounded-xl text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200" href={`/blog/categories/category/${post.id}`}>
                                 {post.category}
                             </Link>
                             <p className="text-sm text-gray-800">{post.date}</p>

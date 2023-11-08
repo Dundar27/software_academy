@@ -7,12 +7,12 @@ const defaultNavigation = [
   {
     id: 1,
     text: "Blog",
-    url: "/blog#blog",
+    url: "/blog",
   },
   {
     id: 2,
-    text: "About",
-    url: "/about",
+    text: "Our About",
+    url: "/our-about",
   },
   {
     id: 3,
