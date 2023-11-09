@@ -8,16 +8,22 @@ export default function VerticalTab() {
 
     const tabs = [
         {
-            icon: <Zap className="mr-5"/>,
+            i: 0,
+            icon: <Zap className="mr-5" />,
             text: "Notifications",
+            hash: "notifications"
         },
         {
-            icon: <User className="mr-5"/>,
+            i: 1,
+            icon: <User className="mr-5" />,
             text: "Profile Settings",
+            hash: "profile-settings"
         },
         {
-            icon: <Settings className="mr-5"/>,
+            i: 2,
+            icon: <Settings className="mr-5" />,
             text: "Account Settings",
+            hash: "account-settings"
         },
     ]
 
@@ -32,9 +38,15 @@ export default function VerticalTab() {
                     ))}
                 </Tab.List>
                 <Tab.Panels className={"basis-5/6 py-3 px-5"}>
-                    <Tab.Panel>Content 1</Tab.Panel>
-                    <Tab.Panel>Content 2</Tab.Panel>
-                    <Tab.Panel>Content 3</Tab.Panel>
+                    <Tab.Panel>
+                        Content 1
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        Content 2
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        Content 3
+                    </Tab.Panel>
                 </Tab.Panels>
             </div>
         </Tab.Group>

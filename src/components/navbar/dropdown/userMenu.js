@@ -15,6 +15,25 @@ export default function UserMenu() {
   const LinkClass =
     "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:ring-offset-white";
 
+
+  const links = [
+    {
+      url: `/profile/${user ? user.displayName : null}`,
+      icon: <User />,
+      text: "Profile"
+    },
+    {
+      url: "/account",
+      icon: <Zap />,
+      text: "Notifications"
+    },
+    {
+      url: "/account",
+      icon: <Settings />,
+      text: "Account Settings"
+    },
+  ]
+
   return (
     <div className="flex flex-row items-center justify-end gap-2">
       <div
@@ -58,22 +77,17 @@ export default function UserMenu() {
                 </p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
-                <Link
-                  className={LinkClass}
-                  href={`/profile/${user.displayName}`}
-                >
-                  <User /> Profile
-                </Link>
-                <Link className={LinkClass} href="/account#notifications">
-                  <Zap /> Notifications
-                </Link>
-                <Link className={LinkClass} href="/account#account-settings">
-                  <Settings /> Account Settings
-                </Link>
+                {links.map((link, index) => (
+                  <button type="button" onClick={() => setSDD(false)} key={index} className="w-full">
+                    <Link className={LinkClass} href={link.url}>
+                      {link.icon} {link.text}
+                    </Link>
+                  </button>
+                ))}
                 <button
                   type="button"
+                  onClick={() => { setMShow(true); setSDD(false) }}
                   className={LinkClass}
-                  onClick={() => setMShow(true)}
                 >
                   <LogOut /> Logout
                 </button>
@@ -81,9 +95,11 @@ export default function UserMenu() {
             </>
           ) : (
             <div className="mt-2 py-2 first:pt-0 last:pb-0">
-              <Link className={LinkClass} href="/login">
-                <LogIn /> Login
-              </Link>
+              <button type="button" onClick={() => setSDD(false)} className="w-full">
+                <Link className={LinkClass} href="/login">
+                  <LogIn /> Login
+                </Link>
+              </button>
             </div>
           )}
         </div>

@@ -70,6 +70,10 @@ export default function RegisterF({ forward = "/" }) {
           console.log(errorCode, errorMessage);
 
           email_error.style.display = "block";
+
+          setTimeout(function () {
+            router.push("/login");
+          }, 1000);
         });
     }
   }
