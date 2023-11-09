@@ -1,6 +1,6 @@
 "use client";
 import { Tab } from "@headlessui/react";
-import { Zap, Layout, Settings, User } from "react-feather"
+import { Zap, Settings, User } from "react-feather"
 
 export default function VerticalTab() {
 
@@ -8,37 +8,31 @@ export default function VerticalTab() {
 
     const tabs = [
         {
-            icon: <Layout />,
-            text: "Dashboard",
-        },
-        {
-            icon: <Zap />,
+            icon: <Zap className="mr-5"/>,
             text: "Notifications",
         },
         {
-            icon: <User />,
+            icon: <User className="mr-5"/>,
             text: "Profile Settings",
         },
         {
-            icon: <Settings />,
+            icon: <Settings className="mr-5"/>,
             text: "Account Settings",
         },
     ]
 
     return (
         <Tab.Group>
-            <div class="flex flex-wrap p-6">
-                <Tab.List className={"flex flex-col space-y-4"}>
+            <div className="flex flex-wrap p-6">
+                <Tab.List className={"basis-1/6 flex flex-col space-y-4"}>
                     {tabs.map((tab, index) => (
                         <Tab key={index} className={className}>
                             {tab.icon} {tab.text}
                         </Tab>
                     ))}
                 </Tab.List>
-                <Tab.Panels className={"py-3 px-5"}>
-                    <Tab.Panel>
-                        
-                    </Tab.Panel>
+                <Tab.Panels className={"basis-5/6 py-3 px-5"}>
+                    <Tab.Panel>Content 1</Tab.Panel>
                     <Tab.Panel>Content 2</Tab.Panel>
                     <Tab.Panel>Content 3</Tab.Panel>
                 </Tab.Panels>

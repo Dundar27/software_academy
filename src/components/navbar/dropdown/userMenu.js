@@ -64,10 +64,10 @@ export default function UserMenu() {
                 >
                   <User /> Profile
                 </Link>
-                <Link className={LinkClass} href="/account">
+                <Link className={LinkClass} href="/account#notifications">
                   <Zap /> Notifications
                 </Link>
-                <Link className={LinkClass} href="/account">
+                <Link className={LinkClass} href="/account#account-settings">
                   <Settings /> Account Settings
                 </Link>
                 <button
