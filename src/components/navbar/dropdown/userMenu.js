@@ -24,13 +24,8 @@ export default function UserMenu() {
     },
     {
       url: "/account",
-      icon: <Zap />,
-      text: "Notifications"
-    },
-    {
-      url: "/account",
       icon: <Settings />,
-      text: "Account Settings"
+      text: "Settings"
     },
   ]
 
@@ -40,6 +35,11 @@ export default function UserMenu() {
         className="hs-dropdown relative inline-flex"
         data-hs-dropdown-placement="bottom-right"
       >
+        {user ? (
+          <Link href={"/account"} className="mx-3 p-2 text-blue-600 rounded-xl hover:bg-gray-100 hover:text-blue-800">
+            <Zap /> <span className="absolute top-5 left-10 font-bold">2</span>
+          </Link>
+        ) : null}
         <button
           id="hs-dropdown-with-trigger"
           type="button"

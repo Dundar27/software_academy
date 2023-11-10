@@ -26,9 +26,9 @@ export default function StickyNavbar() {
         </div>
         <div className="basis-1/2">
           <div className="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
-            <Info className="mr-2"/>
+            <Info className="mr-2" />
             <div>
-              <span className="font-medium">Info alert!</span> We have updated the app, contact us if you encounter problems.
+              <span className="font-medium">Info!</span> Please contact us if you encounter a problem.
             </div>
           </div>
         </div>
