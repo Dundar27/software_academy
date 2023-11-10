@@ -2,6 +2,7 @@
 import { Tab } from "@headlessui/react";
 import { Zap, Settings, User } from "react-feather"
 import AccountSP from "./panels/accountSP";
+import NotificationP from "./panels/notificationP";
 
 export default function VerticalTab() {
 
@@ -40,13 +41,13 @@ export default function VerticalTab() {
                 </Tab.List>
                 <Tab.Panels className={"basis-5/6 py-3 px-5"}>
                     <Tab.Panel>
-                        Content 1
+                        <NotificationP />
                     </Tab.Panel>
                     <Tab.Panel>
                         Content 2
                     </Tab.Panel>
                     <Tab.Panel>
-                            <AccountSP />
+                        <AccountSP />
                     </Tab.Panel>
                 </Tab.Panels>
             </div>
