@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { AuthProvider } from "@/context/auth";
 import StaticNavbar from "@/components/navbar/staticNavbar";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
+import { AppProvider } from "@/context/app";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className + "h-screen"}>
         <AuthProvider>
-          <StaticNavbar />
-          <StickyNavbar />
-          <main id="content" role="main">
-            {children}
-          </main>
+          <AppProvider>
+            <StaticNavbar />
+            <StickyNavbar />
+            <main id="content" role="main">
+              {children}
+            </main>
+          </AppProvider>
         </AuthProvider>
       </body>
     </html>

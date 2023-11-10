@@ -1,6 +1,7 @@
 "use client";
 import { Tab } from "@headlessui/react";
 import { Zap, Settings, User } from "react-feather"
+import AccountSP from "./panels/accountSP";
 
 export default function VerticalTab() {
 
@@ -45,7 +46,7 @@ export default function VerticalTab() {
                         Content 2
                     </Tab.Panel>
                     <Tab.Panel>
-                        Content 3
+                            <AccountSP />
                     </Tab.Panel>
                 </Tab.Panels>
             </div>

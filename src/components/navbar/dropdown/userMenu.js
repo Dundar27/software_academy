@@ -6,12 +6,15 @@ import { Zap, User, Settings, LogOut, LogIn } from "react-feather";
 import { AuthContext } from "@/context/auth";
 import { auth } from "@/database/firebase";
 import SignOut from "@/components/forms/signOut";
+import { AppContext } from "@/context/app";
 
 export default function UserMenu() {
   const [showDropDown, setSDD] = useState(false);
   const [mShow, setMShow] = useState(false);
 
   const { user } = useContext(AuthContext);
+  const { notification } = useContext(AppContext);
+
   const LinkClass =
     "w-full flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-50 hover:ring-2 hover:ring-blue-400 hover:ring-offset-2 hover:ring-offset-white";
 
@@ -37,7 +40,7 @@ export default function UserMenu() {
       >
         {user ? (
           <Link href={"/account"} className="mx-3 p-2 text-blue-600 rounded-xl hover:bg-gray-100 hover:text-blue-800">
-            <Zap /> <span className="absolute top-5 left-10 font-bold">2</span>
+            <Zap /> <span className="absolute top-5 left-10 font-bold">{notification}</span>
           </Link>
         ) : null}
         <button
