@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { auth } from "@/database/firebase";
 import {
   createUserWithEmailAndPassword,
@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/context/app";
 
 export default function RegisterF({ forward = "/" }) {
   const [fields, setFields] = useState({
@@ -19,6 +20,8 @@ export default function RegisterF({ forward = "/" }) {
     password: "",
     confirm_password: "",
   });
+
+  let { notification, setNotification } = useContext(AppContext);
 
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
@@ -55,6 +58,7 @@ export default function RegisterF({ forward = "/" }) {
             .then(() => {
               email_verify_alert.style.display = "block";
               setTimeout(function () {
+                setNotification(notification + 1)
                 router.push(forward);
               }, 3000);
             })
@@ -72,6 +76,7 @@ export default function RegisterF({ forward = "/" }) {
           email_error.style.display = "block";
 
           setTimeout(function () {
+            setNotification(notification + 1)
             router.push("/login");
           }, 1000);
         });

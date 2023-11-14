@@ -7,9 +7,101 @@ export default function AccountSP() {
 
     const { user } = useContext(AuthContext);
 
+    const notificationProps = [
+        {
+            htmlFor: "push",
+            value: "",
+            id: "push",
+            text: "Push",
+            disabled: true,
+            checked: false
+        },
+        {
+            htmlFor: "email",
+            value: "",
+            id: "email",
+            text: "Email",
+            disabled: false,
+            checked: true
+        },
+        {
+            htmlFor: "sms",
+            value: "",
+            id: "sms",
+            text: "Sms",
+            disabled: true,
+            checked: false
+        }
+
+    ]
+
+    const notificationTitle = [
+        { title: "Messages" }, { title: "Reminders" }, { title: "Updates" }
+    ]
+
+    const NotificationSettings = (e) => {
+        e.preventDefault();
+
+
+        let i = 0;
+        let n = 0;
+        while (i < 9) {
+            i++;
+            if (e.target[i].checked) {
+                n = i;
+
+                /*
+                    n = 0 => messages -> push
+                    n = 1 => messages -> email
+                    n = 2 => messages -> sms
+                    n = 3 => reminders -> push
+                    n = 4 => reminders -> email
+                    n = 5 => reminders -> sms
+                    n = 6 => updates -> push
+                    n = 7 => updates -> email
+                    n = 8 => updates -> sms
+                */
+                console.log(n);
+
+                continue;
+            }
+        }
+
+
+    }
+
+
     return (
         <div>
             <div className="overflow-hidden rounded-xl p-6 shadow-lg">
+                <div className="py-4 border-b-2 border-blue-500">
+                    <h2 className="py-2 text-xl font-semibold">Notification Settings</h2>
+                </div>
+                <form onSubmit={NotificationSettings}>
+                    {
+                        notificationTitle.map((t, i1) => (
+                            <div key={i1} className="grid border-b py-6 grid-cols-2">
+                                <h2 className="text-lg font-semibold leading-4 text-slate-700">{t.title}</h2>
+                                <div className="mt-4 flex items-center justify-end">
+                                    <div className="flex flex-col gap-3">
+                                        {notificationProps.map((p, i2) => (
+                                            <label key={i2} htmlFor={`${p.htmlFor}-${i1}-${i2}`} className="inline-flex cursor-pointer items-center">
+                                                <input type="checkbox" value={p.value} id={`${p.id}-${i1}-${i2}`} className="peer" disabled={p.disabled} />
+                                                <span className="ml-3 text-sm font-medium text-gray-900">{p.text}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                    <input type="submit" value={"Save"} className="bg-gray-50 my-2 px-4 py-3 rounded-xl text-blue-600 cursor-pointer hover:bg-gray-200 hover:text-blue-800" />
+                </form>
+            </div>
+            <div className="my-8 overflow-hidden rounded-xl p-6 shadow-lg">
+                <div className="py-4 border-b-2 border-blue-500">
+                    <h2 className="py-2 text-xl font-semibold">Account Settings</h2>
+                </div>
                 <div className="py-4 border-b">
                     <h2 className="py-2 text-xl font-semibold">Email Address</h2>
                     <div className="flex justify-between">
