@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { AlertCircle, XCircle } from "react-feather";
 
-export default function ErrorAlert({ title = "Unsuccessfully updated.", description = "You have unsuccessfully updated your email preferences.", isLink = true, forward = "/", forwardText = "Go Home" }) {
+export default function ErrorAlert({
+    title = "Unsuccessfully updated.",
+    description = "You have unsuccessfully updated your email preferences.",
+    isLink = true,
+    forward = "/",
+    forwardText = "Go Home"
+}) {
 
     return (
         <div className="flex justify-between bg-red-50 border-t-2 border-l-2 border-red-500 rounded-lg my-4 p-4 hover:shadow-md" role="alert">

@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { AlertCircle, XCircle } from "react-feather";
 
-export default function InfoAlert({ title = "Info updated.", description = "You have info updated your email preferences.", isLink = true, forward = "/", forwardText = "Go Home" }) {
+export default function InfoAlert({
+    title = "Info updated.",
+    description = "You have info updated your email preferences.",
+    isLink = true,
+    forward = "/",
+    forwardText = "Go Home"
+}) {
 
     return (
         <div className="flex justify-between bg-blue-50 border-t-2 border-l-2 border-blue-500 rounded-lg my-4 p-4 hover:shadow-md" role="alert">

@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { CheckCircle, XCircle } from "react-feather";
 
-export default function SuccessfulAlert({ title = "Successfully updated.", description = "You have successfully updated your email preferences.", isLink = true, forward = "/", forwardText = "Go Home" }) {
+export default function SuccessfulAlert({
+    title = "Successfully updated.",
+    description = "You have successfully updated your email preferences.",
+    isLink = true,
+    forward = "/",
+    forwardText = "Go Home"
+}) {
 
     return (
         <div className="flex justify-between bg-teal-50 border-t-2 border-l-2 border-teal-500 rounded-lg my-4 p-4 hover:shadow-md" role="alert">
