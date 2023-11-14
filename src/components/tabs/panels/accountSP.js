@@ -86,7 +86,7 @@ export default function AccountSP() {
                                     <div className="flex flex-col gap-3">
                                         {notificationProps.map((p, i2) => (
                                             <label key={i2} htmlFor={`${p.htmlFor}-${i1}-${i2}`} className="inline-flex cursor-pointer items-center">
-                                                <input type="checkbox" value={p.value} id={`${p.id}-${i1}-${i2}`} className="peer" disabled={p.disabled} />
+                                                <input type="checkbox" value={p.value} id={`${p.id}-${i1}-${i2}`} className="peer" disabled={p.disabled} defaultChecked/>
                                                 <span className="ml-3 text-sm font-medium text-gray-900">{p.text}</span>
                                             </label>
                                         ))}
