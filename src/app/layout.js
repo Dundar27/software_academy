@@ -4,6 +4,7 @@ import { AuthProvider } from "@/context/auth";
 import StaticNavbar from "@/components/navbar/staticNavbar";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { AppProvider } from "@/context/app";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className={inter.className + "h-screen"}>
@@ -21,9 +23,15 @@ export default function RootLayout({ children }) {
           <AppProvider>
             <StaticNavbar />
             <StickyNavbar />
-            <main id="content" role="main">
-              {children}
-            </main>
+            <Suspense fallback={
+              <div className="absolute top-[50%] left-[50%] animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+                <span className="sr-only">Loading...</span>
+              </div>
+            }>
+              <main id="content" role="main">
+                {children}
+              </main>
+            </Suspense>
           </AppProvider>
         </AuthProvider>
       </body>
