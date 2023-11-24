@@ -1,8 +1,6 @@
-/* import ErrorAlert from "@/components/alerts/errorA";
-import InfoAlert from "@/components/alerts/infoA";
-import SuccessfulAlert from "@/components/alerts/successfulA"; */
+import { getDatabase, ref, set } from "firebase/database"
 
-export async function NotificationAPI() {
+export async function getNotificationAPI() {
     const res = await fetch("https://software-academy-94090-default-rtdb.firebaseio.com/notifications.json");
 
     if (!res.ok) {
@@ -13,28 +11,21 @@ export async function NotificationAPI() {
     return res.json()
 }
 
-/* export default async function getNotification() {
-    const data = await NotificationAPI();
+export async function setNotificationAPI(type, t, d, iL, f, fT) {
 
-    const component = (condition, t, d, i, f, ft) => {
+    const db = getDatabase();
+    const refRoad = ref(db, "/notifications")
 
-        if (condition === "Successful") {
-            return (<SuccessfulAlert title={t} description={d} isLink={i} forward={f} forwardText={ft} />)
-        } else if (condition === "Error") {
-            return (<ErrorAlert title={t} description={d} isLink={i} forward={f} forwardText={ft} />)
-        } else {
-            return (<InfoAlert title={t} description={d} isLink={i} forward={f} forwardText={ft} />)
-        }
-
-    }
-
-    return (
-        <div>
-            {data.map((n, i) => (
-                <div key={i}>
-                    {component(n.type, n.title, n.description, n.isLink, n.forward, n.forwardText)}
-                </div>
-            ))}
-        </div>
+    await set(refRoad,
+        JSON.parse(JSON.stringify(
+            {
+                type,
+                title: t,
+                description: d,
+                isLink: iL,
+                forward: f,
+                forwardText: fT
+            }
+        ))
     )
-} */
+}
